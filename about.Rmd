@@ -9,8 +9,4 @@ Sergio L. Avila Calero
 Postdoctoral researcher @ [GBOL III: Dark Taxa](https://www.zfmk.de/de/forschung/projekte/gbol-iii-dark-taxa)
 
 Curriculum Vitae [CV](cv/cv.html)
-<<<<<<< HEAD
-
-=======
->>>>>>> 0dd878dfd2b1d2b2c311a46345bae60a82188aa9
 
