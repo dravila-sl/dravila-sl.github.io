@@ -1,0 +1,169 @@
+---
+title: "Sergio's Resume"
+author: Sergio Avila
+date: "`r Sys.Date()`"
+output:
+  pagedown::html_resume:
+    css: ['css/custom_resume.css', 'dd_cv.css', 'resume']
+    # set it to true for a self-contained HTML page but it'll take longer to render
+    self_contained: TRUE
+---
+
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  results='asis', 
+  echo = FALSE
+)
+library(tidyverse)
+library(glue)
+
+# ======================================================================
+# These variables determine how the the data is loaded and how the exports are
+# done.
+
+# Is data stored in google sheets? If no data will be gather from the csvs/
+# folder in project
+using_googlesheets <- TRUE
+
+# Just the copied URL from the sheet
+positions_sheet_loc <- "https://docs.google.com/spreadsheets/d/1Vh0QIRlqvu2-ErckYQm29GraMPh64iaunWYLi5p7J0c/edit#gid=917338460"
+
+# Is this sheet available for anyone to read? If you're using a private sheet
+# set this to false and go to gather_data.R and run the data loading manually
+# once to cache authentication
+sheet_is_publicly_readable <- TRUE
+
+# Is the goal of this knit to build a document that is exported to PDF? If so
+# set this to true to have links turned into footnotes at the end of the
+# document
+PDF_EXPORT <- TRUE
+
+
+# A global (gasp) variable that holds all the links that were inserted for
+# placement at the end
+links <- c()
+
+# ======================================================================
+# Now we source two external scripts. One contains functions for building the
+# text output and the other loads up our data from either googlesheets or csvs
+
+# Functions for building sections from CSV data
+source('parsing_functions.R') 
+
+# Load data for CV/Resume
+source('gather_data_ecology.R')
+
+# Now we just need to filter down the position data to include less verbose
+# categories and only the entries we have designated for the resume
+position_data <- position_data %>% 
+  dplyr::filter(in_resume) %>% 
+  dplyr::mutate(
+    # Build some custom sections by collapsing others
+    section = case_when(
+      section %in% c('research_positions', 'industry_positions') ~ 'entries', 
+      section %in% c('data_science_writings', 'by_me_press') ~ 'writings',
+      TRUE ~ section
+    )
+  ) 
+```
+
+
+
+Aside
+================================================================================
+
+
+![logo](photo/2015.png){width=100%}
+
+Contact {#contact}
+--------------------------------------------------------------------------------
+
+```{r}
+contact_info %>% 
+  glue_data("- <i class='fa fa-{icon}'></i> {contact}")
+```
+
+
+
+Language Skills {#skills}
+--------------------------------------------------------------------------------
+
+Spanish: Native
+
+English: Advanced
+
+German: Intermediate
+
+Portuguese: Intermediate
+
+
+Main
+================================================================================
+
+Sergio L. Avila Calero {#title}
+--------------------------------------------------------------------------------
+
+<br>
+
+__* Dr. rer. nat. in Biology at the WWU Münster in Germany and funded by a scholarship by the German Academic Exchange Service (DAAD)__
+
+__* Experience in laboratory methods such as optical microscopy, microbiology and molecular biology.__
+
+__* Experience in methods for collecting arthropods in the field as well as in the management of biological collections of insects and arachnids.__
+
+__* Interested in biodiversity research of arthropods using traditional and molecular taxonomy.__
+
+__* Good knowledge of statistical analysis using the R software__
+
+
+<br>
+
+ 
+
+Education {data-icon=graduation-cap data-concise=true}
+--------------------------------------------------------------------------------
+
+```{r}
+position_data %>% print_section('education')
+```
+
+Courses and Seminars {data-icon=pencil}
+--------------------------------------------------------------------------------
+
+```{r}
+print_section(position_data, 'courses_seminars')
+```
+
+Selected Teaching Experience {data-icon=chalkboard-teacher}
+--------------------------------------------------------------------------------
+
+::: aside
+```{r eval=FALSE}
+print_text_block(text_blocks, 'teaching_experience_aside')
+```
+:::
+
+```{r}
+print_section(position_data, 'teaching_positions')
+```
+
+Selected Positions {data-icon=suitcase}
+--------------------------------------------------------------------------------
+
+```{r}
+position_data %>% print_section('entries')
+```
+
+
+Selected Publications {data-icon=book}
+--------------------------------------------------------------------------------
+
+::: aside
+_Last updated on `r Sys.Date()`._
+:::
+
+```{r}
+position_data %>% print_section('academic_articles')
+```
+
