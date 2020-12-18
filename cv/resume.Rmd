@@ -98,6 +98,11 @@ German: Intermediate
 Portuguese: Intermediate
 
 
+More info {#more-info}
+--------------------------------------------------------------------------------
+
+For a complete list of positions and publications, see full CV at https://dravila-sl.github.io/cv/cv.html .
+
 Main
 ================================================================================
 
@@ -128,7 +133,15 @@ Education {data-icon=graduation-cap data-concise=true}
 position_data %>% print_section('education')
 ```
 
-Courses and Seminars {data-icon=pencil}
+
+Selected Positions {data-icon=suitcase}
+--------------------------------------------------------------------------------
+
+```{r}
+position_data %>% print_section('entries')
+```
+
+Selected Courses and Seminars {data-icon=pencil}
 --------------------------------------------------------------------------------
 
 ```{r}
@@ -148,12 +161,6 @@ print_text_block(text_blocks, 'teaching_experience_aside')
 print_section(position_data, 'teaching_positions')
 ```
 
-Selected Positions {data-icon=suitcase}
---------------------------------------------------------------------------------
-
-```{r}
-position_data %>% print_section('entries')
-```
 
 
 Selected Publications {data-icon=book}
@@ -167,3 +174,23 @@ _Last updated on `r Sys.Date()`._
 position_data %>% print_section('academic_articles')
 ```
 
+<br>
+<br>
+
+```{r}
+if(PDF_EXPORT){
+  cat("
+  
+Links {data-icon=link}
+--------------------------------------------------------------------------------
+
+<br>
+
+
+")
+  
+  walk2(links, 1:length(links), function(link, index){
+    print(glue('{index}. {link}'))
+  })
+}
+```
