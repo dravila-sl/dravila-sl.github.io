@@ -93,7 +93,6 @@ CV %<>% print_text_block("intro")
 ```
 
 
-
 Education {data-icon=graduation-cap data-concise=true}
 --------------------------------------------------------------------------------
 
@@ -119,6 +118,7 @@ CV %<>% print_section('courses_seminars')
 
 
 <!-- These breaks just force a new page so section doesnt get cut off -->
+<br>
 <br>
 <br>
 <br>
