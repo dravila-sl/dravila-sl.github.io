@@ -2,11 +2,33 @@
 title: "About Me"
 ---
 
-![](pictures/logo.png)
+<!-- These breaks just force a new page so section doesnt get cut off -->
+<br>
+<br>
 
-Sergio L. Avila Calero
+![](pictures/me.jpg)
+Sergio Leonardo Avila Calero
 
-Postdoctoral researcher @ [GBOL III: Dark Taxa](https://www.zfmk.de/de/forschung/projekte/gbol-iii-dark-taxa)
+<br>
+<br>
 
-Curriculum Vitae [CV](cv/cv.html)
+
+Postdoctoral researcher @ [GBOL III: Dark Taxa](https://www.zfmk.de/de/forschung/projekte/gbol-iii-dark-taxa)  
+
+Curriculum Vitae [CV](cv/cv.html)  
+
+<br>
+<br>
+
+Made among the Andes in Bolivia  
+
+![](pictures/home.jpg)
+<br>
+<br>
+
+Living close to the beautiful Rhine river in Germany  
+
+![](pictures/rhein.jpg)
+
+
 

@@ -1,5 +1,8 @@
 ---
-title: "Sergio's Website"
+title: "Welcome to my website!"
 ---
 
-Hello, World!
+<br>
+<br>
+
+An experiment I set up on December 2020 to learn how to use RStudio and Git to be able to deploy my personal webpage. Here I upload interesting information mainly useful for myself but also for whoever finds it out there in the world.
